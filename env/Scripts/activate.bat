@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\tyson\Desktop\gdsc backend\core\env
+set VIRTUAL_ENV=C:\Users\tyson\Desktop\GDSC-BACKEND-master\GDSC-BACKEND-master\env
 
 if not defined PROMPT set PROMPT=$P$G
 
