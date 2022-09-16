@@ -1,27 +1,34 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import CustomUser
+from .models import User
 from .serializers import UserSerializer
 
 # Create your views here.
 
 @api_view(['GET'])
 def allUsers(req):
-    users = CustomUser.objects.all()
+    users = User.objects.all()
     serializer = UserSerializer(users,many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def members(req):
-    return Response('All members will be listed here')
+    users = User.objects.filter(is_member__in=[True])
+    serializer = UserSerializer(users,many=True)
+    return Response(serializer.data)
+
 
 @api_view(['GET'])
 def students(req):
-    return Response('All students will be listed here')
+    users = User.objects.filter(is_member__in=[False])
+    serializer = UserSerializer(users,many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 def admins(req):
-    return Response('All admins will be listed here')
+    users = User.objects.filter(is_admin__in=[True])
+    serializer = UserSerializer(users,many=True)
+    return Response(serializer.data)
 
 
 @api_view(['GET','POST'])

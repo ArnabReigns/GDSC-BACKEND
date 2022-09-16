@@ -36,11 +36,12 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
-class CustomUser(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('email address', unique=True)
     name = models.CharField(max_length=255,null=True,blank=True)
     batch = models.CharField(max_length=255,null=True,blank=True)
-    colelge_id = models.BigIntegerField(null=True,blank=True)
+    stream = models.CharField(max_length=255,null=True,blank=True)
+    colelge_id = models.BigIntegerField(null=True,blank=True,unique=True)
     gender = models.CharField(max_length=255, null=True,blank=True)
     linkedin_id = models.CharField(max_length=255, null=True,blank=True)
     github_id = models.CharField(max_length=255, null=True,blank=True)

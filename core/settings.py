@@ -165,4 +165,4 @@ CORS_ALLOW_CREDENTIALS = True
 # )
 
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.User'
