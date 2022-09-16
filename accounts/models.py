@@ -40,11 +40,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('email address', unique=True)
     name = models.CharField(max_length=255,null=True,blank=True)
     batch = models.CharField(max_length=255,null=True,blank=True)
-    colelge_id = models.IntegerField(null=True,blank=True)
-    
-     
-
-
+    colelge_id = models.BigIntegerField(null=True,blank=True)
+    gender = models.CharField(max_length=255, null=True,blank=True)
+    linkedin_id = models.CharField(max_length=255, null=True,blank=True)
+    github_id = models.CharField(max_length=255, null=True,blank=True)
+    phone_number = models.CharField(max_length=255, null=True,blank=True)
+    is_member =  models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=False)
     
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
