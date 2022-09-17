@@ -1,7 +1,9 @@
+import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.hashers import check_password,make_password
 
 
 class CustomUserManager(BaseUserManager):
@@ -41,13 +43,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255,null=True,blank=True)
     batch = models.CharField(max_length=255,null=True,blank=True)
     stream = models.CharField(max_length=255,null=True,blank=True)
-    colelge_id = models.BigIntegerField(null=True,blank=True,unique=True)
+    college_id = models.BigIntegerField(null=True,blank=True,unique=True)
     gender = models.CharField(max_length=255, null=True,blank=True)
     linkedin_id = models.CharField(max_length=255, null=True,blank=True)
     github_id = models.CharField(max_length=255, null=True,blank=True)
     phone_number = models.CharField(max_length=255, null=True,blank=True)
     is_member =  models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
+    uid = models.UUIDField(default=uuid.uuid4)
     
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -60,3 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    
+
+        
