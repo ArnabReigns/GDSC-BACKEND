@@ -17,27 +17,27 @@ An API made for GDSC TIU website
 
 #### Get all users
 
-```http
+```
   GET /api/accounts/
 ```
 
 #### Get all members
 
-```http
+```
   GET /api/accounts/memeber/
 ```
 #### Get all students
-```http
+```
   GET /api/accounts/student/
 ```
 #### Get all admin
-```http
+```
   GET /api/accounts/admin/
 ```
 
 #### Get user
 
-```http
+```
   GET /api/accounts/{uid}
 ```
 
