@@ -1,13 +1,10 @@
-from re import U
-from turtle import back
 from rest_framework.decorators import api_view,authentication_classes,permission_classes
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth import authenticate
 from rest_framework.response import Response
 from .models import User
 from .serializers import UserSerializer
 from api.authentication import Authentication
-from django.contrib.auth.hashers import check_password,make_password
+from django.contrib.auth.hashers import check_password
 
 # Create your views here.
 
@@ -52,7 +49,6 @@ def userDetails(req):
 def registerUser(req):
 
     if req.method == 'POST':
-        data = req.data
         serializer = UserSerializer(data=req.data)
         if serializer.is_valid():
             serializer.save()
@@ -62,18 +58,10 @@ def registerUser(req):
         else:
             return Response(serializer.errors)    
     else:
-        return Response('Are idhar lene ka nhi, bas dene ka. chal POST kar ab.')
+        return Response('Registration End Point')
 
 
 
-def authenticate(email,password):
-
-    try:
-        user = User.objects.get(email=email)
-    except:
-        return None
-
-    return check_password(password,user.password)
 
 
 @api_view(['GET','POST'])
@@ -106,11 +94,18 @@ def login(req):
             return Response("Wrong email or password")
     else:
 
-        return Response('User login')
+        return Response('User login endpoint')
+
 
 @api_view(['GET'])
-def isLoggedin(req):
-    return Response('returns if user is logged in')
+@authentication_classes([Authentication])
+@permission_classes([IsAuthenticated])
+def currentUser(req):
+    user = req.user
+    s = UserSerializer(user)
+    return Response(s.data)
+    
+
 
 
 
