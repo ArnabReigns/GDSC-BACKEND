@@ -105,7 +105,7 @@ axios
   
 ```
 
-**2. authorization Header :** You can save the uuid of the logged in user
+**2. Authorization Header :** You can save the uuid of the logged in user
 and pass the token in the header as `Token` with the request. But as it is
 not secure to save the Token in local storages or cookie, it is
 not the recomended way.
