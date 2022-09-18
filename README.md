@@ -57,7 +57,7 @@ parameter | Type     | Description                       |
 ```
 
 | data | Type     | Description                       |
-| -------- | ------- | -------------------------------- |
+| :-------- | :------- | :-------------------------------- |
 | `name`      | `string` | **Required** |
 | `email`      | `string` | **Required** |
 | `gender`      | `string` | **Required**|
