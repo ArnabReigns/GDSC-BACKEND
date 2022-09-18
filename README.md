@@ -40,10 +40,30 @@ An API made for GDSC TIU website
 ```
   GET /api/accounts/{uid}
 ```
-
-| Parameter | Type     | Description                       |
+parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `uid`      | `string` | **Required**. uid of user to fetch |
+| `uid`      | `string` | **Required**. Full name of the user |
 
+#### Get current user
 
+```
+  GET /api/accounts/currentuser/
+```
 
+#### Register User
+
+```
+  POST /api/accounts/register/
+```
+
+| data | Type     | Description                       |
+| -------- | ------- | -------------------------------- |
+| `name`      | `string` | **Required** |
+| `email`      | `string` | **Required** |
+| `gender`      | `string` | **Required**|
+| `batch`      | `string` | **Required** |
+| `stream`      | `string` | **Required** |
+| `college_id`      | `number` | **Required**|
+| `phone_number`      | `string` | **Required**|
+| `linkedin_id`      | `string` | **Optional** |
+| `github_id`      | `string` | **Optional** |
