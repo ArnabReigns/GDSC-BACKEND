@@ -42,7 +42,7 @@ An API made for GDSC TIU website
 ```
 parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `uid`      | `string` | **Required**. Full name of the user |
+| `uid`      | `string` | **Required**. uid of the user |
 
 #### Get current user
 
