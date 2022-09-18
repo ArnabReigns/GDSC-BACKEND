@@ -44,7 +44,7 @@ parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `uid`      | `string` | **Required**. Full name of the user |
 
-#### Get logged in user
+#### Get current user
 
 ```
   GET /api/accounts/currentuser/
@@ -57,9 +57,10 @@ parameter | Type     | Description                       |
 ```
 
 | data | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
+| -------- | ------- | -------------------------------- |
 | `name`      | `string` | **Required** |
 | `email`      | `string` | **Required** |
+| `password`      | `string` | **Required** |
 | `gender`      | `string` | **Required**|
 | `batch`      | `string` | **Required** |
 | `stream`      | `string` | **Required** |
@@ -67,3 +68,40 @@ parameter | Type     | Description                       |
 | `phone_number`      | `string` | **Required**|
 | `linkedin_id`      | `string` | **Optional** |
 | `github_id`      | `string` | **Optional** |
+
+#### Login User
+
+```
+  POST /api/accounts/login/
+```
+
+| data | Type     | Description                       |
+| -------- | ------- | -------------------------------- |
+| `email`      | `string` | **Required** |
+| `password`      | `string` | **Required** |
+
+## Authorisation
+
+All the `GET` endpoints are protected with **Token Authentication**.
+so you have to be a authorised user to get information from the database.
+There are two ways to do it.
+
+**1. Http Only Cookie ( Recomended ) :** Whenever a user successfully
+log in, the uuid of the user will be autometically saved in
+a http only cookie. you have to just send the cookies with the request.
+
+Like in **Axios**, use :  `withCredentials: true`
+
+```javascript
+import 'axios';
+
+axios
+  .get(
+    '/cookie-auth-protected-route',
+    { withCredentials: true } // this should be added
+  )
+  .then(res => res.data)
+  .catch(err => { /* not hit since no 401 */ })
+  
+```
+
