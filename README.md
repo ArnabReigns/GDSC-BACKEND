@@ -44,7 +44,7 @@ parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `uid`      | `string` | **Required**. Full name of the user |
 
-#### Get current user
+#### Get logged in user
 
 ```
   GET /api/accounts/currentuser/
