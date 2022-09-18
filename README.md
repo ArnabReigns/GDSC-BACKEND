@@ -82,7 +82,7 @@ parameter | Type     | Description                       |
 
 ## Authorisation
 
-All the `GET` endpoints are protected with **Token Authentication**.
+Endpoints are protected with **Token Authentication**.
 so you have to be a authorised user to get information from the database.
 There are two ways to do it.
 
@@ -105,3 +105,22 @@ axios
   
 ```
 
+**2. authorization Header :** You can save the uuid of the logged in user
+and pass the token in the header as `Token` with the request. But as it is
+not secure to save the Token in local storages or cookie, it is
+not the recomended way.
+
+```javascript
+import 'axios';
+
+const token = '..your token..'
+
+axios.get(url, {
+  //...data
+}, {
+  headers: {
+    'Token': `${token}` 
+  }
+})
+  
+```
