@@ -4,6 +4,13 @@
 An API made for GDSC TIU website
 
 
+## Request URL
+
+```
+https://gdcs-backend.herokuapp.com/
+
+```
+
 ## Features
 
 - User Authentication
