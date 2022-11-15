@@ -9,6 +9,7 @@ An API made for GDSC TIU website
 - User Authentication
 - Session Managemenet
 - Blogs
+- Gallery
 
 
 ## API Reference
@@ -123,4 +124,50 @@ axios.get(url, {
   }
 })
   
+```
+
+## Blogs
+
+
+### Get All Blogs Post
+``` 
+GET /api/blogs/get/all/
+
+```
+
+### Post A Blog - Admin Authentication Required
+
+```
+POST /api/blogs/post/
+
+```
+
+| Field       | Description                                  | Is Required |
+|-------------|----------------------------------------------|-------------|
+| caption     | Blog Caption                                 | Yes         |
+| image       | Image File for Cover                         | Yes         |
+| description | Blog Short Description                       | Yes         |
+| link        | Valid URL for detailed blog (3rd party page) | Yes         |
+
+
+## Gallery
+
+### Post Contents - Admin Authentication Required
+
+```
+POST /api/gallery/post/
+
+```
+
+| Field       | Description           | Is Required |
+|-------------|-----------------------|-------------|
+| thumbnail   | Image File            | Yes         |
+| caption     | Image Caption         | Yes         |
+| description | Long Text Description | Yes         |
+
+### Get Contents
+
+```
+GET /api/gallery/get/
+
 ```
