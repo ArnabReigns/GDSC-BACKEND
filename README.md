@@ -9,6 +9,7 @@ An API made for GDSC TIU website
 - User Authentication
 - Session Managemenet
 - Blogs
+- Gallery
 
 
 ## API Reference
