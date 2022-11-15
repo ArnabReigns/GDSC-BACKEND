@@ -5,9 +5,7 @@ from .models import User
 from .serializers import UserSerializer
 from api.authentication import Authentication
 from django.contrib.auth.hashers import check_password
-from rest_framework import status
 
-from accounts import serializers
 # Create your views here.
 
 
@@ -23,8 +21,6 @@ def allUsers(req):
 
 
 @api_view(['GET'])
-@authentication_classes([Authentication])
-@permission_classes([IsAuthenticated])
 def members(req):
     users = User.objects.filter(is_member__in=[True])
     serializer = UserSerializer(users,many=True)
@@ -32,16 +28,12 @@ def members(req):
 
 
 @api_view(['GET'])
-@authentication_classes([Authentication])
-@permission_classes([IsAuthenticated])
 def students(req):
     users = User.objects.filter(is_member__in=[False])
     serializer = UserSerializer(users,many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-@authentication_classes([Authentication])
-@permission_classes([IsAuthenticated])
 def admins(req):
     users = User.objects.filter(is_admin__in=[True])
     serializer = UserSerializer(users,many=True)
@@ -50,17 +42,8 @@ def admins(req):
 
 
 @api_view(['GET'])
-@authentication_classes([Authentication])
-@permission_classes([IsAuthenticated])
-def userDetails(req,id):
-
-    try:
-        user = User.objects.get(id = id)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
-        
-    except:
-        return Response({'error':'user not found'})
+def userDetails(req):
+    return Response('Get User Details')
 
 @api_view(['GET','POST'])
 def registerUser(req):
